@@ -31,11 +31,12 @@ jobs:
       - name: Deploy Docker container
         run: |
           ssh ubuntu@1.14.195.197 "
-            mkdir -p ~/myproject &&
-            cd ~/myproject &&
-            git pull &&
-            docker build -t next-app . &&
-            docker stop next-app || true &&
-            docker rm next-app || true &&
-            docker run -d --name next-app -p 3000:3000 next-app
-          "
+          mkdir -p ~/myproject &&
+          cd ~/myproject || git clone git@github.com:你的仓库.git ~/myproject &&
+          cd ~/myproject &&
+          git pull &&
+          docker build -t next-app . &&
+          docker stop next-app || true &&
+          docker rm next-app || true &&
+          docker run -d --name next-app -p 3000:3000 next-app
+"

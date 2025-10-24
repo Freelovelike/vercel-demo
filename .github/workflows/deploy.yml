@@ -32,7 +32,9 @@ jobs:
         run: |
           ssh ubuntu@1.14.195.197 "
           mkdir -p ~/myproject &&
-          cd ~/myproject || git clone git@github.com:Freelovelike/vercel-demo.git ~/myproject &&
+          if [ ! -d ~/myproject/.git ]; then
+            git clone git@github.com:Freelovelike/vercel-demo.git ~/myproject
+          fi &&
           cd ~/myproject &&
           git pull &&
           docker build -t next-app . &&

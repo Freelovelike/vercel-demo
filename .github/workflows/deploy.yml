@@ -39,4 +39,4 @@ jobs:
           docker stop next-app || true &&
           docker rm next-app || true &&
           docker run -d --name next-app -p 3000:3000 next-app
-"
+          "
